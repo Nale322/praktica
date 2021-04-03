@@ -36,12 +36,10 @@ for key in data:
     msg['Subject'] = subject
     msg['From'] = login
 
-    #server.sendmail(login, key['email'], msg.as_string())
+    server.sendmail(login, key['email'], msg.as_string())
     sleep(timing)
 server.quit()
 
-def clicked():
-    lbl.configure(text = "Тебя ебали в детстве?")
 
 def edit_cfg():
     num = txt.get()
@@ -51,8 +49,8 @@ def edit_cfg():
         config.write(f)
 
 def add_user():
-    a = alo.get()
-    b = email.get()
+    a = first.get()
+    b = second.get()
     with open('info.csv', 'a', encoding = 'UTF-8') as file:
         file_writer = csv.writer(file, delimiter = ",", lineterminator = "\r")
         file_writer.writerow([a, b])
@@ -79,14 +77,14 @@ lbl.grid(column = 0, row = 2)
 lbl = Label(window, text = "Введите имя человека:", font = ("Corbel"))
 lbl.grid(column = 0, row = 3)
 
-alo = Entry(window, width = 25)
-alo.grid(column = 0, row = 4)
+first = Entry(window, width = 25)
+first.grid(column = 0, row = 4)
 
 lbl = Label(window, text = "Введите email человека:", font = ("Corbel"))
 lbl.grid(column = 0, row = 5)
 
-email = Entry(window, width = 25)
-email.grid(column = 0, row = 6)
+second = Entry(window, width = 25)
+second.grid(column = 0, row = 6)
 
 btn = Button(window, text = "Добавить", bg = "white", fg = "black", relief = "groove", height = "2", command = add_user)
 btn.grid(column = 1, row = 5)
